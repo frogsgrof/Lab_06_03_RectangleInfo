@@ -1,6 +1,6 @@
 // importing classes
 import java.util.Scanner;
-import java.lang.Math; // for square root
+
 
 public class Main {
     public static void main(String[] args) {
@@ -40,57 +40,67 @@ public class Main {
 
 
 
-        // prompt for side A
-        System.out.println("Enter side A: (Whole numbers only, no decimals)");
+        // start side A input
+        System.out.println("Enter side A (whole numbers only, no decimals):");
 
-        if (in.hasNextInt()){ // if input is a valid int
+        // check if input is an int
+        if (in.hasNextInt()) {
+            rectSideA = in.nextInt(); // store int
+            in.nextLine(); // clear next line
+        } else {
+            trash = in.nextLine(); // if not, throw away
+            System.out.println("ERROR: " + trash + " could not be interpreted as an integer.\n" +
+                    "Please exit and try again."); // output error message
+            System.exit(0); // terminate
+        }
 
-            if (in.nextInt() == 0) { // first eliminate zeroes
-                trash = in.nextLine(); // throw out bad input
-                System.out.println("You entered: " + trash + "\n" +
-                        "Invalid input.");
-                System.exit(0); // terminate
-            } else { // if not zero, store it
-                rectSideA = in.nextInt();
-                in.nextLine(); // clear next line
-            }
+        // in case the int isn't positive
+        if (rectSideA < 1){
+            // print error
+            System.out.println("ERROR: sides cannot be negative or zero.");
 
-            if (rectSideA < 0) { // if negative, keep but make it positive
+            if (rectSideA == 0){
+                // if zero, just terminate
+                System.out.println("Please exit and try again.");
+                System.exit(0);
+            } else {
+                // if it's negative, just assume they meant positive but let them know
+                System.out.println(rectSideA + " corrected to -" + rectSideA + ".");
                 rectSideA *= -1;
-                System.out.println("The number you entered is negative. Continuing process with Side A = " + rectSideA + ".");
             }
-        } else { // to handle non-integers
-            trash = in.nextLine(); // throw out bad input
-            System.out.println("You entered: " + trash + "\n" +
-                    "Invalid input.");
-            System.exit(0);
-        } // end side A input
+        }
+        // end side A input
 
-        // prompt for side B
-        System.out.println("Enter side B: (Whole numbers only, no decimals)");
+        // start side B input
 
-        if (in.hasNextInt()){ // if input is a valid int
+        // check if input is an int
+        if (in.hasNextInt()) {
+            rectSideB = in.nextInt(); // store int
+            in.nextLine(); // clear next line
+        } else {
+            trash = in.nextLine(); // if not, throw away
+            System.out.println("ERROR: " + trash + " could not be interpreted as an integer.\n" +
+                    "Please exit and try again."); // output error message
+            System.exit(0); // terminate
+        }
 
-            if (in.nextInt() == 0) { // first eliminate zeroes
-                trash = in.nextLine(); // throw out bad input
-                System.out.println("You entered: " + trash + "\n" +
-                        "Invalid input.");
-                System.exit(0); // terminate
-            } else { // if not zero, store it
-                rectSideB = in.nextInt();
-                in.nextLine(); // clear next line
-            }
+        // in case the int isn't positive
+        if (rectSideB < 1){
+            // print error
+            System.out.println("ERROR: sides cannot be negative or zero.");
 
-            if (rectSideB < 0) { // if negative, keep but make it positive
+            if (rectSideB == 0){
+                // if zero, just terminate
+                System.out.println("Please exit and try again.");
+                System.exit(0);
+            } else {
+                // if it's negative, just assume they meant positive but let them know
+                System.out.println(rectSideB + " corrected to -" + rectSideB + ".");
                 rectSideB *= -1;
-                System.out.println("The number you entered is negative. Continuing process with Side B = " + rectSideB + ".");
             }
-        } else { // to handle non-integers
-            trash = in.nextLine(); // throw out bad input
-            System.out.println("You entered: " + trash + "\n" +
-                    "Invalid input.");
-            System.exit(0);
-        } // end side B input
+        }
+        // end side B input
+
 
         //calculations:
         rectArea = rectSideA * rectSideB;
@@ -103,5 +113,36 @@ public class Main {
                 "Length of diagonal: " + diagonal);
 
         // end
+
+
+        // WRITE MESSAGE TO ANDREW HERE
+
+//        if (in.hasNextInt()){ // if input is a valid int
+//
+//            if (in.nextInt() == 0) { // first eliminate zeroes
+//                trash = in.nextLine(); // throw out bad input
+//                System.out.println("You entered: " + trash + "\n" +
+//                        "Invalid input.");
+//                System.exit(0); // terminate
+//            } else { // if not zero, store it
+//                rectSideA = in.nextInt();
+//                in.nextLine(); // clear next line
+//            }
+//
+//            if (rectSideA < 0) { // if negative, keep but make it positive
+//                rectSideA *= -1;
+//                System.out.println("The number you entered is negative. Continuing process with Side A = " + rectSideA + ".");
+//            }
+//
+//        } else { // to handle non-integers
+//            trash = in.nextLine(); // throw out bad input
+//            System.out.println("You entered: " + trash + "\n" +
+//                    "Invalid input.");
+//            System.exit(0);
+//        } // end side A input
+//
+//
+//
+//
     }
 }
