@@ -5,34 +5,15 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        /*
-        Write a program that asks the user for the lengths of the sides of a rectangle.
-        Again, check for valid input and exit with an error msg if you don’t get it.
-
-        Then print
-        1  The area and perimeter of the rectangle
-        2  The length of the diagonal (use the Pythagorean theorem)
-
-        Testing: use some known values to confirm that the calculations are correct.
-        E.g. 3 – 4 - 5 triangle >> 3 X 4 rectangle
-
-        tests:
-        1. both pos
-        2. side A neg
-        3. side B neg
-        4. side A non-int
-        5. side B non-int
-
-         */
 
         // input variables:
-        int rectSideA = 0;
-        int rectSideB = 0;
+        double rectSideA = 0;
+        double rectSideB = 0;
         String trash = ""; // for bad input
 
         // for calculations later:
-        int rectArea;
-        int rectPerimeter;
+        double rectArea;
+        double rectPerimeter;
         double diagonal;
 
         // initializing scanner:
@@ -41,11 +22,11 @@ public class Main {
 
 
         // start side A input
-        System.out.println("Enter side A (whole numbers only, no decimals):");
+        System.out.println("Enter side A:");
 
         // check if input is an int
-        if (in.hasNextInt()) {
-            rectSideA = in.nextInt(); // store int
+        if (in.hasNextDouble()) {
+            rectSideA = in.nextDouble(); // store int
             in.nextLine(); // clear next line
         } else {
             trash = in.nextLine(); // if not, throw away
@@ -65,17 +46,20 @@ public class Main {
                 System.exit(0);
             } else {
                 // if it's negative, just assume they meant positive but let them know
-                System.out.println(rectSideA + " corrected to -" + rectSideA + ".");
+                System.out.println(rectSideA + " corrected to " + (rectSideA * -1) + ".");
                 rectSideA *= -1;
             }
         }
         // end side A input
 
+
         // start side B input
 
+        System.out.println("Enter side B: ");
+
         // check if input is an int
-        if (in.hasNextInt()) {
-            rectSideB = in.nextInt(); // store int
+        if (in.hasNextDouble()) {
+            rectSideB = in.nextDouble(); // store int
             in.nextLine(); // clear next line
         } else {
             trash = in.nextLine(); // if not, throw away
@@ -95,27 +79,45 @@ public class Main {
                 System.exit(0);
             } else {
                 // if it's negative, just assume they meant positive but let them know
-                System.out.println(rectSideB + " corrected to -" + rectSideB + ".");
+                System.out.println(rectSideB + " corrected to " + (rectSideB * -1) + ".");
                 rectSideB *= -1;
             }
         }
         // end side B input
 
 
+
         //calculations:
         rectArea = rectSideA * rectSideB;
         rectPerimeter = 2 * (rectSideA + rectSideB);
-        diagonal = Math.sqrt((rectSideA ^ 2) + (rectSideB ^ 2));
+        diagonal = Math.sqrt((rectSideA * rectSideA) + (rectSideB * rectSideB));
 
         // final output:
         System.out.println("Area: " + rectArea + "\n" +
                 "Perimeter: " + rectPerimeter + "\n" +
                 "Length of diagonal: " + diagonal);
 
+
         // end
 
 
-        // WRITE MESSAGE TO ANDREW HERE
+
+        /*
+
+        The commented code below this is the remains of my original attempt at this,
+        using integers. I thought about emailing you to ask what's going on
+        with it, but since I figured it out in the end and it wasn't urgent
+        I decided to just include a message here at the end.
+
+        When I ran the old code, I kept having this weird issue where after it asked
+        for side A, it wouldn't proceed until I gave two inputs. I thought it
+        was because of the way I checked for zero/negative numbers, so I reconfigured
+        it the way you see above, but it still didn't work. Luckily changing them all
+        to doubles fixed it. Why is that? I couldn't find any answers online.
+
+         */
+
+        // old code:
 
 //        if (in.hasNextInt()){ // if input is a valid int
 //
@@ -140,8 +142,6 @@ public class Main {
 //                    "Invalid input.");
 //            System.exit(0);
 //        } // end side A input
-//
-//
 //
 //
     }
